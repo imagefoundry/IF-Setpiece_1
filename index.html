@@ -71,7 +71,7 @@
   }
   .body.on-dark{ color:#cfd2d3 }
   .outline{
-    -webkit-text-stroke:1px currentColor;
+    -webkit-text-stroke:1px var(--ink);
     color:transparent;
   }
   .num{
@@ -90,7 +90,7 @@
     margin:0 auto;
     padding:0 var(--pad-x);
   }
-  .section{ padding:var(--section-y) 0 }
+  .section{ padding:clamp(48px,6vw,80px) 0 }
   .section--dark{
     background:var(--black);
     color:#fff;
@@ -105,7 +105,7 @@
 
   /* Nav */
   .nav{
-    position:fixed;top:0;left:0;right:0;z-index:50;
+    position:absolute;top:0;left:0;right:0;z-index:50;
     padding:18px var(--pad-x);
     display:flex;align-items:center;justify-content:space-between;
     mix-blend-mode:difference;
@@ -115,7 +115,7 @@
     font-weight:800;
     text-transform:uppercase;
     letter-spacing:-0.02em;
-    font-size:18px;
+    font-size:24px;
   }
   .nav__brand span{ font-weight:300;opacity:0.7 }
   .nav__cta{
@@ -372,11 +372,11 @@
     .steps{ grid-template-columns:repeat(4,1fr) }
   }
   .step{
-    padding:48px 32px 48px 0;
+    padding:48px 32px 48px 24px;
     border-top:1px solid var(--rule);
   }
   @media (min-width:720px){
-    .step{ padding:48px 32px 48px 0;border-right:1px solid var(--rule) }
+    .step{ padding:48px 32px 48px 24px;border-right:1px solid var(--rule) }
     .step:nth-child(2n){ border-right:0;padding-right:0 }
   }
   @media (min-width:1100px){
@@ -590,16 +590,21 @@
   .why{
     display:grid;
     grid-template-columns:1fr;
-    gap:48px;
+    gap:40px;
+    align-items:center;
   }
   @media (min-width:980px){
-    .why{ grid-template-columns:1.1fr 1fr;gap:80px }
+    .why{ grid-template-columns:1.2fr 1fr;gap:80px }
+  }
+  .why__stats-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
   }
   .why__clients{
-    margin-top:48px;
-    padding:40px 0;
+    margin-top:40px;
+    padding:32px 0 0;
     border-top:1px solid var(--rule);
-    border-bottom:1px solid var(--rule);
   }
   .why__clients-label{
     font-weight:500;
@@ -611,7 +616,7 @@
   }
   .why__clients-row{
     display:flex;flex-wrap:wrap;
-    gap:32px;
+    justify-content:space-between;
     align-items:center;
   }
   .client-name{
@@ -622,37 +627,50 @@
     line-height:1;
     color:var(--ink);
   }
+  .client-logo{
+    height:40px;
+    width:132px;
+    object-fit:contain;
+    filter:grayscale(1) brightness(0);
+  }
   .why__stat{
     border-left:2px solid var(--teal);
-    padding:8px 0 8px 24px;
-    margin-bottom:32px;
+    padding:12px 16px;
   }
   .why__stat-num{
     font-weight:800;
-    font-size:clamp(48px,5vw,72px);
+    font-size:clamp(32px,3.5vw,52px);
     letter-spacing:-0.03em;
     line-height:1;
     color:var(--ink);
   }
   .why__stat-label{
-    font-size:13px;
+    font-size:12px;
     text-transform:uppercase;
-    letter-spacing:0.18em;
+    letter-spacing:0.15em;
     color:var(--mute);
-    margin-top:8px;
+    margin-top:6px;
+    line-height:1.3;
   }
   .why__locations{
-    margin-top:32px;
+    margin-top:24px;
     font-size:15px;
     color:var(--mute);
   }
 
   /* FAQ */
   .faq{
-    border-top:1px solid var(--rule);
+    display:grid;
+    grid-template-columns:1fr;
+    column-gap:clamp(40px,5vw,80px);
+  }
+  @media (min-width:800px){
+    .faq{ grid-template-columns:1fr 1fr }
   }
   .faq__item{
+    border-top:1px solid var(--rule);
     border-bottom:1px solid var(--rule);
+    margin-bottom:-1px;
   }
   .faq__q{
     width:100%;
@@ -700,7 +718,7 @@
   .cta-band{
     background:var(--teal);
     color:#fff;
-    padding:var(--section-y) 0;
+    padding:clamp(48px,6vw,80px) 0;
     position:relative;
     overflow:hidden;
   }
@@ -715,7 +733,7 @@
   .cta-band__inner{ position:relative;z-index:2 }
   .cta-band .eyebrow{ color:#aed5e0 }
   .cta-band__head{
-    margin-bottom:64px;
+    margin-bottom:32px;
     max-width:24em;
   }
   .cta-form{
@@ -912,7 +930,7 @@
 </header>
 
 <!-- SECTION 2 — THE SHIFT -->
-<section class="section" id="shift">
+<section class="section section--soft" id="shift">
   <div class="wrap">
     <div class="section-head">
       <div class="section-head__meta">
@@ -935,13 +953,9 @@
       </div>
     </div>
 
-    <div class="shift__close">
-      <h3 class="display display-sm">Built for property. <span class="outline">Priced as content.</span></h3>
-    </div>
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
 
 <!-- SECTION 3 — THE WORK / SHOWREEL -->
 <section class="section" id="work">
@@ -1042,16 +1056,12 @@
 
     </div>
 
-    <p class="reel__note">
-      Six setpieces built to show what's possible. Each one shows a different sector, a different camera direction, a different mood. Hover any film to play. Click to watch full screen.
-    </p>
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
 
 <!-- SECTION 4 — HOW IT WORKS -->
-<section class="section" id="how">
+<section class="section section--soft" id="how">
   <div class="wrap">
     <div class="section-head">
       <div class="section-head__meta">
@@ -1060,8 +1070,6 @@
       </div>
       <h2 class="section-head__title display display-md">Four steps. <br>One setpiece.</h2>
     </div>
-
-    <p class="lede" style="margin-bottom:48px">Effortless on your side. You send us the assets. We take it from there.</p>
 
     <div class="steps">
       <div class="step">
@@ -1088,7 +1096,6 @@
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
 
 <!-- SECTION 5 — NARRATIVE ARC -->
 <section class="section" id="arc">
@@ -1150,10 +1157,9 @@
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
 
 <!-- SECTION 6 — WHERE IT LIVES -->
-<section class="section" id="channels">
+<section class="section section--soft" id="channels">
   <div class="wrap">
     <div class="section-head">
       <div class="section-head__meta">
@@ -1162,8 +1168,6 @@
       </div>
       <h2 class="section-head__title display display-md">One commission. <br>Every channel.</h2>
     </div>
-
-    <p class="lede" style="margin-bottom:48px">Setpiece is built to work everywhere your audience already is. One brief produces a full set of cuts, each optimised for where it's going.</p>
 
     <div class="channels">
       <div class="channel">
@@ -1192,13 +1196,9 @@
       </div>
     </div>
 
-    <p class="reel__note" style="margin-top:48px">
-      One Setpiece. Every screen. The cuts you need are agreed at brief.
-    </p>
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
 
 <!-- SECTION 7 — PRICING -->
 <section class="section" id="pricing">
@@ -1243,10 +1243,9 @@
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
 
 <!-- SECTION 8 — WHY IMAGE FOUNDRY -->
-<section class="section" id="why">
+<section class="section section--soft" id="why">
   <div class="wrap">
     <div class="section-head">
       <div class="section-head__meta">
@@ -1261,16 +1260,12 @@
         <p class="body">
           Setpiece isn't a video startup. It's a new product from Image Foundry, the CGI studio that's been making property look its best for two decades. CGI, video, interactive and AI Labs under one roof.
         </p>
-        <p class="body mt-md">
-          Setpiece is the next chapter. The same craft thinking, applied to a new medium, at a price point that puts cinematic film within reach of every brief.
-        </p>
-
         <div class="why__locations">
           <strong style="color:var(--ink);font-weight:700;text-transform:uppercase;letter-spacing:0.08em">Manchester · London · New Delhi</strong>
         </div>
       </div>
 
-      <div>
+      <div class="why__stats-row">
         <div class="why__stat">
           <div class="why__stat-num">20<span style="color:var(--teal)">+</span></div>
           <div class="why__stat-label">Years of property CGI</div>
@@ -1289,20 +1284,19 @@
     <div class="why__clients">
       <div class="why__clients-label">The names that trust us</div>
       <div class="why__clients-row">
-        <span class="client-name">Vistry</span>
-        <span class="client-name">Cala</span>
-        <span class="client-name">Plumlife</span>
-        <span class="client-name">Sage</span>
-        <span class="client-name">The Hill Group</span>
+        <img src="./Vistry-logo.svg" alt="Vistry" class="client-logo">
+        <img src="./Cala_Homes_Logo.svg" alt="Cala" class="client-logo">
+        <img src="./Plumlife-Homes.svg" alt="Plumlife" class="client-logo">
+        <img src="./hill-logo.svg" alt="The Hill Group" class="client-logo">
+        <img src="./sage.svg" alt="Sage" class="client-logo">
       </div>
     </div>
   </div>
 </section>
 
-<div class="wrap"><div class="rule"></div></div>
 
 <!-- SECTION 9 — FAQ -->
-<section class="section" id="faq">
+<section class="section" id="faq" style="padding-top:clamp(24px,3vw,40px)">
   <div class="wrap">
     <div class="section-head">
       <div class="section-head__meta">
@@ -1322,10 +1316,6 @@
         <div class="faq__a"><div class="faq__a-inner">Yes, but that's a separate Image Foundry studio commission, not part of a Setpiece. If you need new CGI we'll quote it alongside.</div></div>
       </div>
       <div class="faq__item">
-        <button class="faq__q">How fast can you turn it round? <span class="faq__plus"></span></button>
-        <div class="faq__a"><div class="faq__a-inner">Most Setpieces deliver in two to three days of production once we have the assets and the story is signed off. Tight launch deadlines welcome. Tell us when you need it.</div></div>
-      </div>
-      <div class="faq__item">
         <button class="faq__q">Do we own the footage? <span class="faq__plus"></span></button>
         <div class="faq__a"><div class="faq__a-inner">Yes. Full commercial rights on delivery. Use it anywhere, indefinitely.</div></div>
       </div>
@@ -1335,15 +1325,15 @@
       </div>
       <div class="faq__item">
         <button class="faq__q">What if the first cut isn't right? <span class="faq__plus"></span></button>
-        <div class="faq__a"><div class="faq__a-inner">One round of fine-tuning is included on the hero film. Most briefs land first time because the story is locked in the brief call. Further changes or new cuts are quoted separately.</div></div>
+        <div class="faq__a"><div class="faq__a-inner">Most briefs land first time because the story is locked before we start. Further changes or additional cuts are quoted separately.</div></div>
       </div>
       <div class="faq__item">
         <button class="faq__q">Which channels does it work on? <span class="faq__plus"></span></button>
-        <div class="faq__a"><div class="faq__a-inner">Every one we've tried. Instagram, TikTok, LinkedIn, Meta paid, Rightmove and Zoopla video slots, sales suite screens, investor decks, email. Cuts delivered in the aspect ratios you've briefed.</div></div>
+        <div class="faq__a"><div class="faq__a-inner">All of them. The cuts you need are agreed at brief and delivered in the right aspect ratios.</div></div>
       </div>
       <div class="faq__item">
         <button class="faq__q">How is this different from AI video tools we've seen? <span class="faq__plus"></span></button>
-        <div class="faq__a"><div class="faq__a-inner">Story comes first. AI is part of how we make it, not the whole product. You get craft direction, narrative shape, music selection and a studio finish. Tools give you motion. Setpiece gives you a film.</div></div>
+        <div class="faq__a"><div class="faq__a-inner">AI is part of how we make it, not the whole product. You get craft direction, narrative shape, music selection and a studio finish. Tools give you motion. Setpiece gives you a film.</div></div>
       </div>
     </div>
   </div>
@@ -1353,17 +1343,12 @@
 <section class="cta-band" id="free-test">
   <div class="wrap cta-band__inner">
 
-    <div class="cta-band__head">
-      <span class="eyebrow">Try it on your project</span>
-      <h2 class="display display-md" style="margin-top:16px">Send us your photos. We'll show you what Setpiece does.</h2>
-    </div>
-
     <div class="cta-form">
       <div class="cta-form__intro">
-        <p class="body on-dark">
-          Not sure if it works on your assets? Send us four to six photos or CGI from a real project. We'll come back inside five working days with a watermarked 15-second teaser, free of charge.
-        </p>
-
+        <div class="cta-band__head">
+          <span class="eyebrow">Try it on your project</span>
+          <h2 class="display display-md" style="margin-top:16px">Send us your photos.<br>We'll show you what Setpiece does.</h2>
+        </div>
         <ol class="cta-form__steps">
           <li>Send four to six source images via the form</li>
           <li>We book a 20-minute call to brief the cut</li>
