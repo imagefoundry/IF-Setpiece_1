@@ -19,8 +19,8 @@
     --teal-dark:#004a5e;
     --mute:#666;
     --soft:#f4f4f4;
-    --maxw:1480px;
-    --pad-x:clamp(20px,4vw,64px);
+    --maxw:min(1800px,calc(100vw - 80px));
+    --pad-x:clamp(20px,4vw,80px);
     --section-y:clamp(80px,12vw,160px);
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -45,10 +45,10 @@
     letter-spacing:-0.035em;
     line-height:0.92;
   }
-  .display-xl{ font-size:clamp(56px,9vw,148px) }
-  .display-lg{ font-size:clamp(44px,6.5vw,108px) }
-  .display-md{ font-size:clamp(36px,5vw,84px) }
-  .display-sm{ font-size:clamp(28px,3.4vw,56px) }
+  .display-xl{ font-size:clamp(44px,10cqi,180px) }
+  .display-lg{ font-size:clamp(34px,7cqi,130px) }
+  .display-md{ font-size:clamp(28px,5.5cqi,100px) }
+  .display-sm{ font-size:clamp(22px,3.8cqi,68px) }
   .eyebrow{
     font-weight:500;
     text-transform:uppercase;
@@ -89,6 +89,7 @@
     max-width:var(--maxw);
     margin:0 auto;
     padding:0 var(--pad-x);
+    container-type:inline-size;
   }
   .section{ padding:clamp(48px,6vw,80px) 0 }
   .section--dark{
@@ -206,9 +207,11 @@
   .hero__inner{
     width:100%;max-width:var(--maxw);margin:0 auto;
     display:grid;grid-template-columns:1fr;gap:40px;
+    container-type:inline-size;
   }
   .hero__title{ color:#fff }
   .hero__title .line{ display:block }
+  .cta-band__head .line{ display:block;white-space:nowrap }
   .hero__title .price{ color:#fff;font-weight:400 }
   .hero__sub{
     color:#dadde0;
@@ -943,12 +946,12 @@
     <div class="shift__grid">
       <div>
         <p class="body">
-          Property marketing has changed. CGI and photography that used to carry a campaign now scroll past in half a second. Production crews cost £15,000 to £30,000 and take weeks. Drones are weather-dependent and don't show the inside. Library footage doesn't show your location.
+          Property marketing has changed. CGI and photography that used to carry a campaign is often scrolled past in half a second. Production crews cost £15,000 to £30,000 and take weeks. Drones are weather-dependent and don't show the interiors. Library footage doesn't show your location, with your development in it. 
         </p>
       </div>
       <div>
         <p class="body">
-          Setpiece is the answer. We take the assets you already have and turn them into cinematic narrative film. The same CGI and photography that's been sitting on a hard drive, now working five times harder.
+          Setpiece is the answer. We take the assets you already have and turn them into cinematic narrative film. The same CGI and photography that's been sitting on a hard drive, now working five times harder. 
         </p>
       </div>
     </div>
@@ -1173,13 +1176,13 @@
       <div class="channel">
         <div class="channel__ratio">9:16 / Vertical</div>
         <h3 class="channel__title">Social Reels and feeds</h3>
-        <p class="channel__body">Vertical cuts for Instagram, TikTok and LinkedIn. Built to perform on mute, with text and motion that stops the scroll.</p>
+        <p class="channel__body">Vertical cuts for Instagram, TikTok and LinkedIn. Built to perform with sound or on mute, with text and motion that stops the scroll.</p>
         <div class="channel__shape s-vertical"></div>
       </div>
       <div class="channel">
         <div class="channel__ratio">16:9 / Landscape</div>
         <h3 class="channel__title">Sales suite screens</h3>
-        <p class="channel__body">Looping hero films for showroom displays, sales centres and pitch decks. Cinematic length, ambient pace.</p>
+        <p class="channel__body">Looping hero films for showroom displays, sales centres and pitch decks.</p>
         <div class="channel__shape s-landscape"></div>
       </div>
       <div class="channel">
@@ -1309,7 +1312,7 @@
     <div class="faq">
       <div class="faq__item">
         <button class="faq__q">What if we don't have great photography? <span class="faq__plus"></span></button>
-        <div class="faq__a"><div class="faq__a-inner">It helps. Better source images make better Setpieces. If your photography is thin we can suggest what to shoot, or build the film around CGI instead. The 20-minute call covers all of this.</div></div>
+        <div class="faq__a"><div class="faq__a-inner">It helps. Better source images make better Setpieces. If your photography is thin we can suggest what to shoot, or build the film around CGI instead. </div></div>
       </div>
       <div class="faq__item">
         <button class="faq__q">Can you generate the CGI too? <span class="faq__plus"></span></button>
@@ -1347,7 +1350,14 @@
       <div class="cta-form__intro">
         <div class="cta-band__head">
           <span class="eyebrow">Try it on your project</span>
-          <h2 class="display display-md" style="margin-top:16px">Send us your photos.<br>We'll show you what Setpiece does.</h2>
+          <h2 class="display display-md" style="margin-top:16px">
+            <span class="line">Send us your</span>
+            <span class="line">images.</span>
+            <span class="line">We'll show</span>
+            <span class="line">you what</span>
+            <span class="line">Setpiece</span>
+            <span class="line">does.</span>
+          </h2>
         </div>
         <ol class="cta-form__steps">
           <li>Send four to six source images via the form</li>
